@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
+import pymongo
+from mongoose import ObjectId
 
 def create_connection():
     connection = None
@@ -7,7 +9,7 @@ def create_connection():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",  # Add your password if required
+            password="root",  # Add your password if required
             database="school"
         )
         print("Connection to MySQL DB successful")
@@ -67,3 +69,29 @@ def delete_student(connection, student_id):
     query = "DELETE FROM students WHERE id = %s"
     values = (student_id,)
     execute_query(connection, query, values)
+
+class MyMongoDB:
+    def __init__(self):
+        self.client = pymongo.MongoClient("mongodb://localhost:27017/")
+        self.db = self.client["school"]
+        self.collection = self.db["students"]
+
+    def create_student(self, name, age, grade):
+        student = {"name": name, "age": age, "grade": grade}
+        self.collection.insert_one(student)
+
+    def get_students(self):
+        return self.collection.find()
+
+    def get_student_by_id(self, student_id):
+        return self.collection.find_one({"_id": ObjectId(student_id)})
+
+    def update_student(self, student_id, name, age, grade):
+        query = {"_id": ObjectId(student_id)}
+        new_values = {"$set": {"name": name, "age": age, "grade": grade}}
+        self.collection.update_one(query, new_values)
+
+    def delete_student(self, student_id):
+        query = {"_id": ObjectId(student_id)}
+        self.collection.delete_one(query)
+        

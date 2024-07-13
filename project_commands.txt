@@ -1,0 +1,34 @@
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:latest
+
+CRETE DATABASE school;
+
+CREATE TABLE students (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(100) NOT NULL,
+ age INT NOT NULL,
+ grade VARCHAR(10) NOT NULL
+);
+
+pip install fastapi uvicorn
+pip3 install mysql-connector-python           
+
+#to run the Fast API
+uvicorn main:app --reload   
+
+docker exec -it mysql-container bash -- to run the container terminal
+
+git clone https://github.com/Rushi-Varmora05/Assignment-5
+
+
+
+
+
+
+#MongoDB
+docker pull mongo:latest
+docker run -d -p 27017:27017 --name=mongodb-container mongo:latest
+
+mongosh
+
+pip3 install pymongo
+pip3 install mongoose
