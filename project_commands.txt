@@ -32,3 +32,9 @@ mongosh
 
 pip3 install pymongo
 pip3 install mongoose
+
+#Elastic 
+
+docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.14.3
