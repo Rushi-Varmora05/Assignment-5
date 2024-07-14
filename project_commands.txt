@@ -1,40 +1,28 @@
-docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:latest
-
-CRETE DATABASE school;
-
-CREATE TABLE students (
- id INT AUTO_INCREMENT PRIMARY KEY,
- name VARCHAR(100) NOT NULL,
- age INT NOT NULL,
- grade VARCHAR(10) NOT NULL
-);
-
-pip install fastapi uvicorn
-pip3 install mysql-connector-python           
-
-#to run the Fast API
-uvicorn main:app --reload   
-
-docker exec -it mysql-container bash -- to run the container terminal
-
-git clone https://github.com/Rushi-Varmora05/Assignment-5
-
-
-
-
-
-
-#MongoDB
-docker pull mongo:latest
-docker run -d -p 27017:27017 --name=mongodb-container mongo:latest
-
-mongosh
-
-pip3 install pymongo
-pip3 install mongoose
-
 #Elastic 
 
-docker network create elastic
-docker pull docker.elastic.co/elasticsearch/elasticsearch:8.14.3
-docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Elasticsearch security features have been automatically configured!
+✅ Authentication is enabled and cluster connections are encrypted.
+
+ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  
+
+ℹ️  HTTP CA certificate SHA-256 fingerprint:
+  f2f8e01c0c9d43399372a0fe5abeb79ff0e62a72e99df6a2bf363eebd8f95103
+
+ℹ️  Configure Kibana to use this cluster:
+• Run Kibana and click the configuration link in the terminal when Kibana starts.
+• Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImYyZjhlMDFjMGM5ZDQzMzk5MzcyYTBmZTVhYmViNzlmZjBlNjJhNzJlOTlkZjZhMmJmMzYzZWViZDhmOTUxMDMiLCJrZXkiOiJGaXc2c3BBQnRpWF83b1FJdDhuQzpsTjgwRWxCQ1F2S3BUaUZ4VU5rcFNBIn0=
+
+ℹ️ Configure other nodes to join this cluster:
+• Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImYyZjhlMDFjMGM5ZDQzMzk5MzcyYTBmZTVhYmViNzlmZjBlNjJhNzJlOTlkZjZhMmJmMzYzZWViZDhmOTUxMDMiLCJrZXkiOiJGU3c2c3BBQnRpWF83b1FJdDhuQzpkendoX3pyYlJaR21JT1kxZVp0TnB3In0=
+
+  If you're running in Docker, copy the enrollment token and run:
+  `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.14.3`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+openssl s_client -connect localhost:9200 -showcerts </dev/null 2>/dev/null | openssl x509 -outform PEM > elasticsearch_cert.pem
+
+/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/lib/security/cacerts
