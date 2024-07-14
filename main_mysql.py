@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from models import Student
-from database import create_connection, create_student, get_students, get_student_by_id, update_student, delete_student
+from database_mysql import create_connection, create_student, get_students, get_student_by_id, update_student, delete_student
 
 app = FastAPI()
 connection = create_connection()
