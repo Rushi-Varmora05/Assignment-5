@@ -5,7 +5,6 @@ from database_elastic import MyElasticSearch
 
 app = FastAPI()
 es = MyElasticSearch()
-
 @app.post("/elastic/students/")
 def create_student(student: Student):
     es.create_student(student.name, student.age, student.grade)

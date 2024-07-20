@@ -47,6 +47,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch:8.14.3
 docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.14.3
 
 ## Running the Fast API
+pip install elasticsearch   
 uvicorn main_elastic:app --reload  
 
 # Repo URL : https://github.com/Rushi-Varmora05/Assignment-5
