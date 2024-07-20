@@ -41,33 +41,3 @@ class MyFAISS:
     def vectorize_student(self, student):
         return self.model.encode(student)
     
-'''
-print("Before class")
-my_faiss = MyFAISS()
-
-# Add student to FAISS
-
-student_vector = my_faiss.vectorize_student("This is a student")
-print(student_vector)
-
-my_faiss.add_student(1, student_vector)
-
-# Search for similar students
-
-my_faiss.search_student(student_vector, 5)
-
-# Remove student from FAISS
-
-my_faiss.remove_student(1)
-
-# Update student in FAISS
-
-my_faiss.update_student(1, student_vector)
-
-# Save and load index
-
-my_faiss.save_index("index.faiss")
-
-my_faiss.load_index("index.faiss")
-
-'''

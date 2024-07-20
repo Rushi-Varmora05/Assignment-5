@@ -16,6 +16,16 @@ def api_faiss_create_student(student: Student):
     my_faiss.add_student(student_vector)
     return {"message": "Student added successfully"}
 
+
+'''
+POST http://
+'''
+@app.post("/faiss/students/search")
+def api_faiss_get_student(student: Student):
+    student_vector = my_faiss.vectorize_student(student.name)
+    students = my_faiss.search_student(student_vector, 5)
+    return students
+
 '''
 DELETE http://
 '''
@@ -32,12 +42,3 @@ def api_faiss_update_student(student_id: str, student: Student):
     student_vector = my_faiss.vectorize_student(student.name)
     my_faiss.update_student(student_vector)
     return {"message": "Student updated successfully"}
-
-'''
-GET http://
-'''
-@app.post("/faiss/students/search")
-def api_faiss_get_student(student: Student):
-    student_vector = my_faiss.vectorize_student(student.name)
-    students = my_faiss.search_student(student_vector, 5)
-    return students
