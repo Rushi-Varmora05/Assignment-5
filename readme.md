@@ -50,3 +50,13 @@ docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/e
 uvicorn main_elastic:app --reload  
 
 # Repo URL : https://github.com/Rushi-Varmora05/Assignment-5
+
+
+# neo4j
+docker pull neo4j
+docker run --name neo4j-container \
+    --publish=7474:7474 --publish=7687:7687 \
+    --volume=/Users/rahil/Documents/DBMS_Q1/Databases/neo4j/data:/data \
+    neo4j
+    
+bin/cypher-shell -u neo4j -p <password>
