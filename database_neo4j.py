@@ -42,7 +42,7 @@ class MyNeo4jDB:
 
     def serialize(self, data):
         serialized_data = []
-        if data[0] is None:
+        if len(data)==0 or data[0] is None:
             return []
         for student in data:
             serialized_student = {
