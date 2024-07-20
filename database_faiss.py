@@ -5,15 +5,16 @@ from sentence_transformers import SentenceTransformer
 import os
 
 class MyFAISS:
+    model =''
     #sentence-transformers/all-MiniLM-L6-v2
-    def __init__(self,model_name = "sentence-transformers/all-MiniLM-L6-v2"):
-        modelPath = "models/"
+    def __init__(self,model_name = "all-MiniLM-L6-v2"):
+        modelPath = "models2/"
         self.index = faiss.IndexFlatL2(256)
         print("Configuring FAISS")
-        if not os.path.exists(modelPath+model_name):
+        if not os.path.exists(modelPath+"all-MiniLM-L6-v2"):
             self.Vectorizer_model = SentenceTransformer(model_name)
-            model.save(modelPath)
-        model = SentenceTransformer(modelPath+model_name)
+            self.Vectorizer_model.save(modelPath)
+        self.Vectorizer_model = SentenceTransformer(modelPath+"all-MiniLM-L6-v2")
         print("Transformer Configured Successfully")
 
     def add_student(self, student_vector):
