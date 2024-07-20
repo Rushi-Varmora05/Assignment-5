@@ -2,16 +2,12 @@ from fastapi import FastAPI, HTTPException
 from models import Student
 from database_neo4j import MyNeo4jDB
 
-#neo4j
-from neo4j import GraphDatabase
-
 app = FastAPI()
 
 neo4j_connector = MyNeo4jDB()
 
-## Neo4j
 '''
-POST http://
+POST http://127.0.0.1:8000/neo4j/students/
 '''
 @app.post("/neo4j/students/")
 def api_neo4j_create_student(student: Student):
@@ -19,7 +15,7 @@ def api_neo4j_create_student(student: Student):
     return {"message": "Student created successfully"}
 
 '''
-GET http://
+GET http://127.0.0.1:8000/neo4j/students
 '''
 @app.get("/neo4j/students/")
 def api_neo4j_get_students():
@@ -28,9 +24,8 @@ def api_neo4j_get_students():
     return students
 
 '''
-GET http://
+GET http://127.0.0.1:8000/neo4j/students/{student_id}
 '''
-
 @app.get("/neo4j/students/{student_id}")
 def api_neo4j_get_student(student_id: int):
     student = neo4j_connector.get_student_by_id(student_id)
@@ -40,7 +35,7 @@ def api_neo4j_get_student(student_id: int):
     return student
 
 '''
-PUT http://
+PUT http://127.0.0.1:8000/neo4j/students/{student_id}
 '''
 @app.put("/neo4j/students/{student_id}")
 def api_neo4j_update_student(student_id: int, student: Student):
@@ -48,7 +43,7 @@ def api_neo4j_update_student(student_id: int, student: Student):
     return {"message": "Student updated successfully"}
 
 '''
-DELETE http://
+DELETE http://127.0.0.1:8000/neo4j/students/{student_id}
 '''
 @app.delete("/neo4j/students/{student_id}")
 def api_neo4j_delete_student(student_id: int):
